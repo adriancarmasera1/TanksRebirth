@@ -323,14 +323,13 @@ namespace TanksRebirth.Net
             client.Send(message, DeliveryMethod.Sequenced);
         }
 
-        public static void SendCampaignByName(string name, int missionId) {
+        public static void SendCampaignByName(string name) {
             if (!IsConnected())
                 return;
             NetDataWriter message = new();
             message.Put(PacketID.SendCampaignByName);
 
             message.Put(name);
-            message.Put(missionId);
 
             client.Send(message, DeliveryMethod.ReliableOrdered);
         }
